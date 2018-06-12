@@ -1,0 +1,23 @@
+<nav class="navbar navbar-light bg-light" *ngIf="noLoading">
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="title-page navbar-brand" routerLink="/">
+                <img src="/assets/Logo.png" alt="logo" class="logo-menu">
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav align-items-end">
+        <li class="nav-item" ngbDropdown>
+            <div class="nav-link active" id="menu" ngbDropdownToggle>
+                <img [src]="user.avatar" class="menu-image"> 
+                <span>{{user.name}} <span class="d-none d-sm-inline">{{user.lastName}}</span></span>
+            </div>
+            <div class="dropdown-menu" ngbDropdownMenu>
+                <a class="dropdown-item" href="#">Configurações</a>
+                <a class="dropdown-item" href="#">Instruções</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Sair</a>
+            </div>
+        </li>
+    </ul>
+</nav>

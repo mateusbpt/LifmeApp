@@ -1,0 +1,71 @@
+<div *ngIf="noLoading">
+  <app-info-navbar></app-info-navbar>
+  <div class="container mt-4">
+    <div class="title-page">Desafios</div>
+    <div class="row">
+      <div class="col-xs-12 com-sm-12 col-md-6 col-lg-6 mt-4">
+        <div class="col-xs-12 com-sm-12 col-md-12 col-lg-12">
+          <div class="card mb-3">
+            <div class="card-header">
+              <img [src]="user.avatar" class="avatar-challenge float-left mr-3">
+              <h2 class="card-title">
+                {{ user.name }} {{ user.lastName }}
+              </h2>
+              <div class="card-text">@{{ user.nickname }}</div>
+              <h4 class="text-danger float-right">
+                Desafios Restantes: 3
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 com-sm-12 col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              Desafio Atual
+            </div>
+            <div class="card-body">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <img src="/assets/avatar/avatar4.png" class="avatar-challenge float-left mr-3">
+                  <h5 class="card-title">
+                    DESAFIO 1
+                  </h5>
+                  <p class="card-text">Faça uma caminhada de no mínimo 15 minutos</p>
+                  <button class="btn btn-primary mr-2">Aceitar</button>
+                  <button class="btn btn-secondary">Rejeitar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 com-sm-12 col-md-6 col-lg-6 mt-4">
+        <div class="card">
+          <div class="card-header">
+            Desafios do dia
+          </div>
+          <div class="card-body">
+            <div class="card mb-3">
+              <div class="card-body">
+                <img src="/assets/avatar/avatar4.png" class="avatar-challenge float-left mr-3">
+                <h5 class="card-title">
+                  DESAFIO 1
+                </h5>
+                <p class="card-text">Faça uma caminhada de no mínimo 15 minutos</p>
+              </div>
+            </div>
+            <div class="card mb-3">
+              <div class="card-body">
+                <img src="/assets/avatar/avatar7.png" class="avatar-challenge float-left mr-3">
+                <h5 class="card-title">
+                  DESAFIO 2
+                </h5>
+                <p class="card-text">Faça uma caminhada de no mínimo 15 minutos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

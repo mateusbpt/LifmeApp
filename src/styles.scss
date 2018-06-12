@@ -1,1 +1,148 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'assets/bootstrap.min.css';
+@import '~ngx-toastr/toastr.css';
+@import '~font-awesome/css/font-awesome.css';
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Passion+One');
+
+
+body {
+    background-color: rgba(220,220,220,0.5);
+}
+
+.title-page {
+    font-size:  3em;
+    color: #343a40;
+    font-weight: 800;
+}
+
+.background-container-1 {
+    background: url('assets/background/background5.jpg');
+    background-size: cover;
+    height: 300px;
+    position: relative; 
+}
+
+.black-container {
+    height: 50px;
+    width: 100%;
+    background-color: #1a1a1a; 
+}
+
+.avatar-image {
+    width: 210px;
+    height: auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto; 
+    border: 10px solid #127ba3;
+}
+
+.menu-image {
+    width: 50px;
+    height: auto;
+    margin: 0 5px;
+}
+
+.name-profile {
+    font-size: 3em;
+    font-family: 'Passion One', cursive;
+    color: whitesmoke;
+    text-shadow: 2px 2px 1px #1a1a1a;
+}
+
+.nav-link {
+    font-size: 1.3em;
+}
+
+.nav-item {
+    @media (max-width: 576px) { 
+        margin-right: 0;
+     }
+}
+
+.navbar {
+    padding: 0.2rem 0.5rem;
+    font-weight: normal;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
+.dropdown-item {
+    font-size: 1.3em;
+}
+
+ .text-card {
+   color: rgba(255,255,255,0.5);
+ }
+
+ .no-border {
+     border: none;
+ }
+
+ .carousel {
+     position: initial;
+ }
+
+ .carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #1a1a1a;
+    padding: 1.2em;
+    width: 30px;
+    height: 30px;
+    border: solid 2px whitesmoke;
+    background-size: 65%; 
+    border-radius: 2em;  
+}
+
+.avatar-post {
+    width: 50px;
+    height: auto;
+}
+
+.avatar-like {
+    width: 100px;
+    height: auto;
+}
+
+.name-post {
+    margin: 0px 10px;
+    font-size: 18px;
+}
+
+.like-active {
+    color: red;
+}
+
+.like {
+    cursor: pointer;
+}
+
+.logo-menu {
+    width: 3em;
+    height: auto;
+}
+
+.avatar-challenge {
+    width: 100px;
+}
+
+::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
