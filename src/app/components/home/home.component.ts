@@ -4,6 +4,8 @@ import { UserService } from '../../shared/services/user/user.service';
 import { ProfileModel } from '../../shared/models/profile-model';
 import { PostService } from '../../shared/services/post/post.service';
 import { SimplePostModel } from '../../shared/models/simple-post-model';
+import { PostModel } from '../../shared/models/post-model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,36 +15,17 @@ import { SimplePostModel } from '../../shared/models/simple-post-model';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private modalService: NgbModal, private userService: UserService,
-    private postService: PostService) {
+  constructor(private modalService: NgbModal, private userService: UserService, private postService: PostService, private toastr: ToastrService) {
     this.profile = new ProfileModel();
     this.posts = new Array<SimplePostModel>();
+    this.post = new PostModel;
   }
-
-  private closeResult: string;
 
   public profile: ProfileModel;
   public posts: Array<SimplePostModel>;
-  public cardLength: number = 1;
+  public post: PostModel;
   public noLoading: boolean = false;
 
-  open(content) {
-    this.modalService.open(content, { centered: true, size: 'lg' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
 
   private getProfile(): void {
     this.userService.profile().subscribe(response => {
@@ -54,6 +37,39 @@ export class HomeComponent implements OnInit {
     this.postService.friends().subscribe(response => {
       this.posts = response;
     });
+  }
+
+  public addPost() {
+    this.postService.add(this.post).subscribe(response => {
+      this.toastr.success(response.message, 'Lifme');
+      this.post = new PostModel();
+    });
+  }
+
+  public reject(id) {
+    this.userService.reject(id).subscribe(response => {
+      this.toastr.success(response.message, 'Lifme');
+      this.getProfile();
+      this.getFriendPosts();
+    });
+  }
+
+  public accept(id) {
+    this.userService.accept(id).subscribe(response => {
+      this.toastr.success(response.message, 'Lifme');
+      this.getProfile();
+      this.getFriendPosts();
+    });
+  }
+
+  public like(id) {
+    this.postService.like(id).subscribe(response => {
+      this.getFriendPosts();
+    });
+  }
+
+  public verifyLike(post: SimplePostModel): boolean {
+    return post.likes.some(x => x.id === this.profile.id);
   }
 
   ngOnInit() {

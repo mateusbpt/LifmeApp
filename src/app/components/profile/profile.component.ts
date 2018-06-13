@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileModel } from '../../shared/models/profile-model';
+import { SimplePostModel } from '../../shared/models/simple-post-model';
+import { UserService } from '../../shared/services/user/user.service';
+import { PostService } from '../../shared/services/post/post.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -8,33 +13,37 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProfileComponent implements OnInit {
 
-  closeResult: string;
+  constructor(private userService: UserService, private postService: PostService, private route: Router, private activateRoute: ActivatedRoute) { }
 
-  constructor(private modalService: NgbModal) { }
+  public user: ProfileModel;
+  public profile: ProfileModel;
+  public posts: Array<SimplePostModel>;
+  public noLoading: boolean = false;
 
-  public cardLength: number = 1;
-
-  public user: any = { name: "Mateus", lastname: "Teixeira" };
-
-  open(content) {
-    this.modalService.open(content, { centered: true, size: 'lg' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  public like(id) {
+    this.postService.like(id).subscribe(response => {
+      this.postService.postUser(id).subscribe(response => {
+        this.posts = response;
+      });
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  public verifyLike(post: SimplePostModel): boolean {
+    return post.likes.some(x => x.id === this.user.id);
   }
 
   ngOnInit() {
+    const id = this.activateRoute.snapshot.params['id'];
+    this.userService.profile().subscribe(response => {
+      this.user = response;
+      this.userService.profileUser(id).subscribe(response => {
+        this.profile = response;
+        this.postService.postUser(id).subscribe(response => {
+          this.posts = response;
+          this.noLoading = true;
+        });
+      });
+    });
   }
 
 }

@@ -32,6 +32,7 @@ import { Interceptor } from './settings/interceptor';
 import { AppSettings } from './settings/app-settings';
 import { HomeComponent } from './components/home/home.component';
 import { InfoComponent } from './components/info/info.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -60,7 +61,8 @@ const InterceptorConfig = {
     GroupsComponent,
     LoginComponent,
     HomeComponent,
-    InfoComponent
+    InfoComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

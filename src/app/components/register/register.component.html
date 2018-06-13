@@ -1,18 +1,92 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <h1 class="text-center">LIFME - Registro</h1>
-      <form #f="ngForm" (submit)="f.form.valid && register()" novalidate>
-        <div class="form-group">
-          <label>Email:</label>
-          <input type="text" class="form-control" [(ngModel)]="credentials.email" #email="ngModel" name="email" placeholder="Informe o e-mail" required>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="title-page navbar-brand">
+    <img src="/assets/Logo.png" alt="logo" class="logo-menu">
+  </div>
+  <form #f="ngForm" (submit)="f.form.valid && login()" novalidate class="form-inline ml-auto">
+    <div class="form-group m-2">
+      <div class="d-flex flex-column">
+        <label>E-mail:</label>
+        <input type="text" class="form-control" [(ngModel)]="credentials.email" #email="ngModel" name="email" placeholder="Informe o e-mail"
+          required email>
+      </div>
+    </div>
+    <div class="form-group m-2">
+      <div class="d-flex flex-column">
+        <label>Senha:</label>
+        <input type="password" class="form-control" minlength="8" [(ngModel)]="credentials.password" #name="ngModel" name="password"
+          placeholder="Informe a senha" required>
+      </div>
+    </div>
+    <div class="d-flex flex-column">
+      <button [disabled]="!f.form.valid" type="submit" class="btn btn-primary mt-3">Entrar</button>
+    </div>
+  </form>
+</nav>
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-5">
+      <div>
+        <div class="p-5">
+          <h1 class="text-light">bem vindo ao</h1>
+          <img src="/assets/Logo.png" alt="logo" class="logo-page">
+          <div class="mt-2 text-light text-login">Faça seu registro e incentive-se a seguir hábitos mais saudáveis.</div>
         </div>
-        <div class="form-group">
-          <label>Senha:</label>
-          <input type="password" class="form-control" [(ngModel)]="credentials.password" name="password" placeholder="Informe a senha" required>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="card p-3">
+        <div class="card-body">
+          <form #f="ngForm" (submit)="f.form.valid && register()" novalidate>
+            <div class="form-group">
+              <label>Email:
+                <small class="text-danger text-bold">*</small>
+              </label>
+              <input type="text" class="form-control" [(ngModel)]="registerData.email" #email="ngModel" name="email" placeholder="Informe o e-mail"
+                required>
+            </div>
+            <div class="form-group">
+              <label>Senha:
+                <small class="text-danger text-bold">*</small>
+              </label>
+              <input type="password" class="form-control" [(ngModel)]="registerData.password" name="password" placeholder="Informe a senha"
+                required>
+            </div>
+            <div class="form-group">
+              <label>Nome:
+                <small class="text-danger text-bold">*</small>
+              </label>
+              <input type="text" class="form-control" [(ngModel)]="registerData.name" name="name" placeholder="Informe o seu nome" required>
+            </div>
+            <div class="form-group">
+              <label>Sobrenome:
+                <small class="text-danger text-bold">*último sobrenome</small>
+              </label>
+              <input type="text" class="form-control" [(ngModel)]="registerData.lastName" name="lastName" placeholder="Informe seu sobrenome"
+                required>
+            </div>
+            <div class="form-group">
+              <label>Apelido:
+                <small class="text-danger text-bold">*</small>
+              </label>
+              <input type="text" class="form-control" [(ngModel)]="registerData.nickname" name="nickname" placeholder="Informe seu apelido"
+                required>
+            </div>
+            <div class="form-group">
+              <label>Avatar:
+                <small class="text-danger text-bold">*escolha um dos avatares</small>
+              </label>
+              <div class="row">
+                <div class="col-4" *ngFor="let avatar of avatars">
+                  <label>
+                    <input type="radio" name="avatar" [value]="avatar" [(ngModel)]="registerData.avatar" />
+                    <img [src]="avatar" class="avatar-select">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <button [disabled]="!f.form.valid" type="submit" class="btn btn-block btn-primary">Criar sua conta</button>
+          </form>
         </div>
-        <button [disabled]="!f.form.valid" type="submit" class="btn btn-block btn-primary">Logar</button>
-      </form>
+      </div>
     </div>
   </div>
-</div>
