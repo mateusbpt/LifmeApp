@@ -5,6 +5,8 @@ import { CompleteChallengeModel } from '../../shared/models/complete-challenge-m
 import { ChallengeService } from '../../shared/services/challenge/challenge.service';
 import { ToastrService } from 'ngx-toastr';
 import { ChallengeModel } from '../../shared/models/challenge-model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-challenges',
@@ -25,10 +27,6 @@ export class ChallengesComponent implements OnInit {
   public profile: ProfileModel;
   public challengeProfile: ChallengeModel;
   public challengeFinalize: CompleteChallengeModel;
-
-  public ativar() {
-    this.active = true;
-  }
 
   public accept(id: number) {
     this.challengeService.accept(id).subscribe(response => {
@@ -67,6 +65,13 @@ export class ChallengesComponent implements OnInit {
         });
       });
     });
+  }
+
+  public calculeFinalizeTime() {
+    var tomorrow = moment().add(1, 'days').startOf('day');
+    var dateAux = moment();
+    var diff = tomorrow.diff(dateAux);
+    return moment.utc(diff).format('HH:mm');
   }
 
   ngOnInit() {

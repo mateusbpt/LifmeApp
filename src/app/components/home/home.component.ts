@@ -43,6 +43,14 @@ export class HomeComponent implements OnInit {
     this.postService.add(this.post).subscribe(response => {
       this.toastr.success(response.message, 'Lifme');
       this.post = new PostModel();
+      this.getFriendPosts();
+    });
+  }
+
+  public removePost(id) {
+    this.postService.remove(id).subscribe(response => {
+      this.toastr.success(response.message, 'Lifme');
+      this.getFriendPosts();
     });
   }
 

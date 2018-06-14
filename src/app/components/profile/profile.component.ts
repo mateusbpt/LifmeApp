@@ -5,6 +5,7 @@ import { SimplePostModel } from '../../shared/models/simple-post-model';
 import { UserService } from '../../shared/services/user/user.service';
 import { PostService } from '../../shared/services/post/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserService, private postService: PostService, private route: Router,
-    private activateRoute: ActivatedRoute) {
+    private activateRoute: ActivatedRoute, public toastr: ToastrService) {
     this.user = new ProfileModel();
     this.profile = new ProfileModel();
     this.posts = new Array<SimplePostModel>();
@@ -26,8 +27,19 @@ export class ProfileComponent implements OnInit {
   public noLoading: boolean = false;
 
   public like(id) {
+    const userId = this.activateRoute.snapshot.params['id'];
     this.postService.like(id).subscribe(response => {
-      this.postService.postUser(id).subscribe(response => {
+      this.postService.postUser(userId).subscribe(response => {
+        this.posts = response;
+      });
+    });
+  }
+
+  public removePost(id) {
+    const userId = this.activateRoute.snapshot.params['id'];
+    this.postService.remove(id).subscribe(response => {
+      this.toastr.success(response.message, 'Lifme');
+      this.postService.postUser(userId).subscribe(response => {
         this.posts = response;
       });
     });

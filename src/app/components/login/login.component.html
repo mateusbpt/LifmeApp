@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light">
+<nav class="navbar navbar-light bg-light">
   <div class="title-page navbar-brand">
     <img src="/assets/logo.png" alt="logo" class="logo-menu">
   </div>
@@ -6,14 +6,14 @@
     <form #g="ngForm" (submit)="g.form.valid && login()" novalidate class="form-inline">
       <div class="form-group m-2">
         <div>
-          <label class="d-block">E-mail:</label>
+          <label class="d-block text-primary">E-mail:</label>
           <input type="text" class="form-control" [(ngModel)]="credentials.email" #email="ngModel" name="email" placeholder="Informe o e-mail"
             required email>
         </div>
       </div>
       <div class="form-group m-2">
         <div>
-          <label class="d-block">Senha:</label>
+          <label class="d-block text-primary">Senha:</label>
           <input type="password" class="form-control" minlength="8" [(ngModel)]="credentials.password" #name="ngModel" name="password"
             placeholder="Informe a senha" required>
         </div>
@@ -29,12 +29,12 @@
         <div class="p-5">
           <h1 class="text-light">bem vindo ao</h1>
           <img src="/assets/logo.png" alt="logo" class="logo-page">
-          <div class="mt-2 text-light text-login">Faça seu registro e incentive-se a seguir hábitos mais saudáveis.</div>
+          <div class="mt-2 text-light text-login">Faça seu registro e ganhe um incentivo a mais para seguir hábitos saudáveis.</div>
         </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-      <div class="card p-3">
+      <div class="card text-primary p-3">
         <div class="card-body">
           <form #f="ngForm" (submit)="f.form.valid && register()" novalidate>
             <div class="form-group">

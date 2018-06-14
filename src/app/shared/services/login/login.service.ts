@@ -20,7 +20,6 @@ export class LoginService {
 
   public logout(): void {
     this.tokenService.signOut();
-    this.router.navigate(['login']);
   }
 
   public isLogged() : boolean {

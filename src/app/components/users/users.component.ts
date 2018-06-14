@@ -20,32 +20,7 @@ export class UsersComponent implements OnInit {
   public profile: ProfileModel;
   public noLoading: boolean = false;
   public users: Array<UsersModel>;
-
-  public reject(id) {
-    this.userService.reject(id).subscribe(response => {
-      this.toastr.success(response.message, 'Lifme');
-      this.userService.profile().subscribe(response => {
-        this.profile = response;
-        this.userService.all().subscribe(response => {
-          this.users = response;
-          this.noLoading = true;
-        })
-      });
-    });
-  }
-
-  public accept(id) {
-    this.userService.accept(id).subscribe(response => {
-      this.toastr.success(response.message, 'Lifme');
-      this.userService.profile().subscribe(response => {
-        this.profile = response;
-        this.userService.all().subscribe(response => {
-          this.users = response;
-          this.noLoading = true;
-        })
-      });
-    });
-  }
+  public filter: string;
 
   public invite(id) {
     this.userService.invite(id).subscribe(response => {
@@ -53,7 +28,7 @@ export class UsersComponent implements OnInit {
       this.userService.profile().subscribe(response => {
         this.profile = response;
         this.userService.all().subscribe(response => {
-          this.users = response;
+          this.users = response.filter(x => !x.isFriend && !x.isInvite && !x.isPending && !x.isUser);
           this.noLoading = true;
         })
       });
@@ -64,7 +39,7 @@ export class UsersComponent implements OnInit {
     this.userService.profile().subscribe(response => {
       this.profile = response;
       this.userService.all().subscribe(response => {
-        this.users = response;
+        this.users = response.filter(x => !x.isFriend && !x.isInvite && !x.isPending && !x.isUser);
         this.noLoading = true;
       })
     });

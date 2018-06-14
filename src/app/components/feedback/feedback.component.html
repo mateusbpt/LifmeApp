@@ -16,58 +16,45 @@
           <h6 class="card-header">Desafios Concluídos</h6>
           <div class="card-body">
             <i class="fa fa-gamepad fa-5x"></i>
-            <h1 class="float-right text-white">12/45</h1>
+            <h1 class="float-right text-white">{{ feedback.completedChallenges.length }}/{{ feedback.totalChallenges }}</h1>
           </div>
         </div>
         <div class="card text-white bg-primary mb-3">
           <h6 class="card-header">Conquistas Adquiridas</h6>
           <div class="card-body">
             <i class="fa fa-trophy fa-5x"></i>
-            <h1 class="float-right text-white">12/45</h1>
+            <h1 class="float-right text-white">{{ feedback.badges.length }}/{{ feedback.totalBadges }}</h1>
           </div>
         </div>
       </div>
       <div class="col-xs-12 com-sm-12 col-md-6 col-lg-8 mt-4">
         <div class="card text-white bg-primary mb-3">
-          <h6 class="card-header">Minhas medalhas</h6>
+          <h6 class="card-header">Minhas conquistas</h6>
           <div class="card-body">
             <div class="row">
-              <div class="col-4">
-                <img src="http://nybi.cc/wp-content/uploads/2017/11/af2e834c1e23ab30f1d672579d61c25a_15.png" width="100%">
-              </div>
-              <div class="col-4">
-                <img src="http://nybi.cc/wp-content/uploads/2017/11/af2e834c1e23ab30f1d672579d61c25a_15.png" width="100%">
-              </div>
-              <div class="col-4">
-                <img src="http://nybi.cc/wp-content/uploads/2017/11/af2e834c1e23ab30f1d672579d61c25a_15.png" width="100%">
+              <div class="col-6 col-sm-6 col-md-4 col-lg-3" *ngFor="let badge of feedback.badges">
+                <img [src]="badge.image" width="100%" placement="bottom" [ngbTooltip]="badge.name">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-xs-12 com-sm-12 col-md-12 col-lg-12 mt-4">
+      <div class="col-xs-12 com-sm-12 col-md-12 col-lg-12 mt-4" *ngIf="feedback.completedChallenges.length > 0">
         <div class="card text-white bg-primary mb-3">
           <h6 class="card-header">Desafios concluídos</h6>
           <div class="card-body">
-            <div class="row">
-              <div class="col-xs-12 com-sm-12 col-md-6 col-lg-6 mt-3">
-                <div class="card">
+            <div class="row mt-0">
+              <div class="col-xs-12 com-sm-12 col-md-6 col-lg-6 mt-3" *ngFor="let challenge of feedback.completedChallenges">
+                <div class="card text-primary">
                   <div class="card-body">
-                    <h1>Desafio 1</h1>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-12 com-sm-12 col-md-6 col-lg-6 mt-3">
-                <div class="card">
-                  <div class="card-body">
-                    <h1>Desafio 1</h1>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-12 com-sm-12 col-md-6 col-lg-6 mt-3">
-                <div class="card">
-                  <div class="card-body">
-                    <h1>Desafio 1</h1>
+                    <img [src]="challenge.challenge.image" class="avatar-challenge float-left mr-3">
+                    <h6 class="card-title">
+                      Desafio: 
+                    </h6>
+                    <p class="card-text text-justify">{{ challenge.challenge.name }}</p>
+                    <h6>Feedback:</h6>
+                    <p class="card-text text-justify">{{ challenge.feedback }}.</p>
+                    <div class="float-right">Concluído em: {{ challenge.dayChallenge | date:'dd/MM/yyyy' }}</div>
                   </div>
                 </div>
               </div>
