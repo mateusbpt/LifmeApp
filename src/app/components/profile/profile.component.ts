@@ -13,7 +13,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserService, private postService: PostService, private route: Router, private activateRoute: ActivatedRoute) { }
+  constructor(private userService: UserService, private postService: PostService, private route: Router,
+    private activateRoute: ActivatedRoute) {
+    this.user = new ProfileModel();
+    this.profile = new ProfileModel();
+    this.posts = new Array<SimplePostModel>();
+  }
 
   public user: ProfileModel;
   public profile: ProfileModel;

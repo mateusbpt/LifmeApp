@@ -1,0 +1,146 @@
+.demo{ background: #2d3e50; }
+.main-timeline{
+    overflow: hidden;
+    position: relative;
+}
+.main-timeline:before{
+    content: "";
+    width: 10px;
+    height: 100%;
+    background: #95a5a5;
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.main-timeline .timeline{
+    width: 50%;
+    padding: 0 60px 0 70px;
+    float: right;
+    text-align: center;
+    position: relative;
+}
+.main-timeline .timeline-content{
+    display: block;
+    padding: 35px;
+    background: #0c85e7;
+    border-radius: 20px;
+    position: relative;
+}
+.main-timeline .timeline-content:hover{ text-decoration: none; }
+.main-timeline .timeline-content:before{
+    content: "";
+    width: 80px;
+    height: 20px;
+    background: #0c85e7;
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+}
+.main-timeline .timeline-content:after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2d3e50;
+    position: absolute;
+    bottom: 12px;
+    left: -20px;
+}
+.main-timeline .icon{
+    display: block;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 15px;
+    background: #0c85e7;
+    font-size: 35px;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: -120px;
+    z-index: 1;
+}
+.main-timeline .icon:after{
+    content: "";
+    border: 5px dotted #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+}
+.main-timeline .title{
+    display: inline-block;
+    padding-bottom: 7px;
+    margin: 0 0 10px 0;
+    border-bottom: 2px solid #fff;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+.main-timeline .description{
+    font-size: 14px;
+    color: #fff;
+    margin: 0 0 5px 0;
+}
+.main-timeline .timeline:nth-child(2n){ padding: 0 70px 0 60px; }
+.main-timeline .timeline:nth-child(2n) .timeline-content:before{
+    left: auto;
+    right: -50px;
+}
+.main-timeline .timeline:nth-child(2n) .timeline-content:after{
+    left: auto;
+    right: -20px;
+}
+.main-timeline .timeline:nth-child(2n) .icon{
+    left: auto;
+    right: -120px;
+}
+.main-timeline .timeline:nth-child(2){ margin-top: 150px; }
+.main-timeline .timeline:nth-child(odd){ margin: -150px 0 0 0; }
+.main-timeline .timeline:nth-child(even){ margin-bottom: 120px; }
+.main-timeline .timeline:first-child,
+.main-timeline .timeline:last-child:nth-child(even){ margin: 0; }
+.main-timeline .timeline:nth-child(2n) .timeline-content,
+.main-timeline .timeline:nth-child(2n) .timeline-content:before,
+.main-timeline .timeline:nth-child(2n) .icon{ background: #ffab07; }
+.main-timeline .timeline:nth-child(3n) .timeline-content,
+.main-timeline .timeline:nth-child(3n) .timeline-content:before,
+.main-timeline .timeline:nth-child(3n) .icon{ background: #f73757; }
+.main-timeline .timeline:nth-child(4n) .timeline-content,
+.main-timeline .timeline:nth-child(4n) .timeline-content:before,
+.main-timeline .timeline:nth-child(4n) .icon{ background: #0cbe2d; }
+@media only screen and (max-width: 990px){
+    .main-timeline .timeline{ padding-right: 0; }
+    .main-timeline .timeline:nth-child(2n){ padding-left: 0; }
+}
+@media only screen and (max-width: 767px){
+    .main-timeline:before{ display: none; }
+    .main-timeline .timeline,
+    .main-timeline .timeline:nth-child(even),
+    .main-timeline .timeline:nth-child(odd){
+        width: 100%;
+        float: none;
+        padding: 0 0 0 120px;
+        margin: 0 0 30px 0;
+    }
+    .main-timeline .timeline-content{ padding: 12px; }
+    .main-timeline .timeline:nth-child(2n) .timeline-content:before{
+        right: auto;
+        left: -50px;
+    }
+    .main-timeline .timeline:nth-child(2n) .timeline-content:after{
+        right: auto;
+        left: -20px;
+    }
+    .main-timeline .timeline:nth-child(2n) .icon{
+        right: auto;
+        left: -120px;
+    }
+}
+@media only screen and (max-width: 480px){
+    .main-timeline .title{ font-size: 16px; }
+}

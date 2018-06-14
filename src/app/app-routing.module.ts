@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: 'challenges', component: ChallengesComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'friends', component: FriendsComponent },
-  { path: 'groups', component: GroupsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile/:id', component: ProfileComponent }
-];
+  { path: 'profile/:id', component: ProfileComponent },
+  { path: '**', redirectTo: '' }
+]; 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

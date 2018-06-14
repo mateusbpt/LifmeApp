@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     this.userService.register(this.registerData)
       .subscribe(response => {
         this.toastrService.success(response.message, 'Lifme');
-        this.router.navigate(['login']);
+        this.registerData = new RegisterModel();
       }, error => {
         console.log(error)
         this.toastrService.error(error.error.message, 'Lifme');

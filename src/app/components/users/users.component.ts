@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../shared/services/user/user.service';
+import { ProfileModel } from '../../shared/models/profile-model';
+import { SimpleUserModel } from '../../shared/models/simple-user-model';
+import { UsersModel } from '../../shared/models/users-model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users',
@@ -7,9 +12,62 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private toastr: ToastrService) {
+    this.profile = new ProfileModel();
+    this.users = new Array<UsersModel>();
+  }
+
+  public profile: ProfileModel;
+  public noLoading: boolean = false;
+  public users: Array<UsersModel>;
+
+  public reject(id) {
+    this.userService.reject(id).subscribe(response => {
+      this.toastr.success(response.message, 'Lifme');
+      this.userService.profile().subscribe(response => {
+        this.profile = response;
+        this.userService.all().subscribe(response => {
+          this.users = response;
+          this.noLoading = true;
+        })
+      });
+    });
+  }
+
+  public accept(id) {
+    this.userService.accept(id).subscribe(response => {
+      this.toastr.success(response.message, 'Lifme');
+      this.userService.profile().subscribe(response => {
+        this.profile = response;
+        this.userService.all().subscribe(response => {
+          this.users = response;
+          this.noLoading = true;
+        })
+      });
+    });
+  }
+
+  public invite(id) {
+    this.userService.invite(id).subscribe(response => {
+      this.toastr.success(response.message, 'Lifme');
+      this.userService.profile().subscribe(response => {
+        this.profile = response;
+        this.userService.all().subscribe(response => {
+          this.users = response;
+          this.noLoading = true;
+        })
+      });
+    });
+  }
 
   ngOnInit() {
+    this.userService.profile().subscribe(response => {
+      this.profile = response;
+      this.userService.all().subscribe(response => {
+        this.users = response;
+        this.noLoading = true;
+      })
+    });
   }
 
 }

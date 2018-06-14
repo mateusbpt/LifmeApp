@@ -1,61 +1,70 @@
-<app-info-navbar></app-info-navbar>
-<app-navbar></app-navbar>
-<div class="container mt-4">
-  <div class="title-page">Usuários</div>
-  <div class="row">
-    <div class="col-xs-12 col-xs-12 col-md-12 col-lg-12 mt-3">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Informe o nome do usuário a ser pesquisado...">
-      </div>
-      <button type="button" class="btn btn-primary float-right">
-        buscar usuários
-      </button>
-    </div>
-    <div class="col-xs-12 col-xs-6 col-md-4 col-lg-3 mt-5">
-      <div class="card">
-        <img class="card-img-top" src="assets/avatar/avatar.png">
-        <div class="card-body">
-          <h5 class="card-title">USUÁRIO 1</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-block btn-primary">Adicionar amigo</button>
+<div *ngIf="noLoading">
+  <app-info-navbar></app-info-navbar>
+  <div class="container mt-4 mb-4">
+    <div class="row">
+      <div class="col-xs-12 com-sm-12 col-md-12 col-lg-12">
+        <div class="card background-profile">
+          <div class="card-body">
+            <img [src]="profile.avatar" class="avatar-image">
+            <div class="name-profile text-center">@{{ profile.nickname }}</div>
+          </div>
+          <app-navbar></app-navbar>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-xs-6 col-md-4 col-lg-3 mt-5">
-      <div class="card">
-        <img class="card-img-top" src="assets/avatar/avatar2.jpg">
-        <div class="card-body">
-          <h5 class="card-title">USUÁRIO 2</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-block btn-primary">Adicionar amigo</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-xs-6 col-md-4 col-lg-3 mt-5">
-      <div class="card">
-        <img class="card-img-top" src="assets/avatar/avatar3.png">
-        <div class="card-body">
-          <h5 class="card-title">USUÁRIO 3</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-block btn-primary">Adicionar amigo</button>
+      <div class="col-xs-12 col-xs-12 col-md-12 col-lg-12 mt-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Informe o nome do usuário a ser pesquisado...">
+            </div>
+            <button type="button" class="btn btn-primary float-right">
+              buscar usuários
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-xs-6 col-md-4 col-lg-3 mt-5">
-      <div class="card">
-        <img class="card-img-top" src="assets/avatar/avatar4.jpg">
-        <div class="card-body">
-          <h5 class="card-title">USUÁRIO 4</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div class="col-xs-12 col-xs-6 col-md-4 col-lg-3 mt-5">
+        <div class="card">
+          <img class="card-img-top" src="assets/avatar/avatar1.png">
+          <div class="card-body">
+            <h5 class="card-title">USUÁRIO 1</h5>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-block btn-primary">Adicionar amigo</button>
+          </div>
         </div>
-        <div class="card-body">
-          <button class="btn btn-block btn-primary">Adicionar amigo</button>
+      </div>
+      <div class="col-xs-12 col-xs-6 col-md-4 col-lg-3 mt-5">
+        <div class="card">
+          <img class="card-img-top" src="assets/avatar/avatar2.png">
+          <div class="card-body">
+            <h5 class="card-title">USUÁRIO 2</h5>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-block btn-primary">Adicionar amigo</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-xs-6 col-md-4 col-lg-3 mt-5">
+        <div class="card">
+          <img class="card-img-top" src="assets/avatar/avatar3.png">
+          <div class="card-body">
+            <h5 class="card-title">USUÁRIO 3</h5>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-block btn-primary">Adicionar amigo</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-xs-6 col-md-4 col-lg-3 mt-5">
+        <div class="card">
+          <img class="card-img-top" src="assets/avatar/avatar4.png">
+          <div class="card-body">
+            <h5 class="card-title">USUÁRIO 4</h5>
+          </div>
+          <div class="card-body">
+            <button class="btn btn-block btn-primary">Adicionar amigo</button>
+          </div>
         </div>
       </div>
     </div>
