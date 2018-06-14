@@ -31,10 +31,6 @@ import { TokenService } from './shared/services/utils/token.service';
 import { Interceptor } from './settings/interceptor';
 import { AppSettings } from './settings/app-settings';
 import { HomeComponent } from './components/home/home.component';
-import { InfoComponent } from './components/info/info.component';
-import { RegisterComponent } from './components/register/register.component';
-
-
 
 const InterceptorConfig = {
   provide: HTTP_INTERCEPTORS,
@@ -60,9 +56,7 @@ const InterceptorConfig = {
     FriendsComponent,
     GroupsComponent,
     LoginComponent,
-    HomeComponent,
-    InfoComponent,
-    RegisterComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

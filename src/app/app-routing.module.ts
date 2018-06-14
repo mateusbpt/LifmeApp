@@ -8,7 +8,6 @@ import { GroupsComponent } from './components/groups/groups.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path: 'feedback', component: FeedbackComponent },
   { path: 'friends', component: FriendsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: '**', redirectTo: '' }
 ]; 
